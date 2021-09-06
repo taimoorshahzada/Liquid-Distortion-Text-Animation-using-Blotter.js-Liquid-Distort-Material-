@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/blotter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/liquidDistortMaterial.js"></script>
+</head>
+<body>
+    <div class="bg"></div>
+    <div id="text"></div>
+    <script>
+        var innerText = document.getElementById("text");
+        var text = new Blotter.Text("TS", {
+            family: "Monument",
+            size: 120,
+            fill: "white",
+            paddingLeft: 80,
+            paddingRight: 80,
+            paddingTop: 80,
+            paddingBottom: 80
+        });
+
+        let material = new Blotter.LiquidDistortMaterial();
+
+        material.uniforms.uVolatility.value = 0.3;
+        material.uniforms.uSpeed.value = 0.7;
+        material.uniforms.uSeed.value = 5;
+
+            // these all properties can be set on blotter.js material page 
+        
+            let blotter = new Blotter(material, {
+                texts: text
+            });
+            let scope = blotter.forText(text);
+            scope.appendTo(innerText);
+    </script>
+</body>
+</html>
